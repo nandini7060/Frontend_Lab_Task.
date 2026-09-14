@@ -1,0 +1,92 @@
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSS Transition and Transform</title>
+
+    <style>
+
+        body {
+            font-family: Arial;
+            text-align: center;
+        }
+
+        /* Common properties for all boxes */
+        .box {
+            width: 150px;
+            height: 150px;
+            background-color: rgb(230, 173, 202);
+            display: inline-block;
+            margin: 30px;
+
+            /* Transition properties */
+            transition-property: all;
+            transition-duration: 2s;
+            transition-timing-function: ease;
+            transition-delay: 1s;
+        }
+
+
+        /* BOX 1 - TRANSLATE  left than right*/
+
+        .box1:hover {
+            transform: translate(100px, 50px);
+        }
+
+
+        /* BOX 2 - ROTATE */
+
+        .box2:hover {
+            transform: rotate(360deg);
+        }
+
+
+        /* BOX 3 - SCALE */
+
+        .box3:hover {
+            transform: scale(1.5);
+        }
+
+
+        /* BOX 4 - SKEW */
+
+        .box4:hover {
+            transform: skew(40deg);
+        }
+
+
+        /* BOX 5 - MULTIPLE TRANSFORM */
+
+        .box5:hover {
+            transform: translate(100px, 50px) rotate(360deg) scale(1.3);
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <h1>CSS Transition and Transform Effects</h1>
+
+    <div class="box box1">
+        <h3>Translate</h3>
+    </div>
+
+    <div class="box box2">
+        <h3>Rotate</h3>
+    </div>
+
+    <div class="box box3">
+        <h3>Scale</h3>
+    </div>
+
+    <div class="box box4">
+        <h3>Skew</h3>
+    </div>
+
+    <div class="box box5">
+        <h3>Multiple Effects</h3>
+    </div>
+
+</body>
+</html>
