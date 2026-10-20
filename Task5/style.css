@@ -1,163 +1,587 @@
+
+/* General Styling */
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
+    background-color: #080b20;
+    color: white;
+    overflow-x: hidden;
+}
+
+:root {
+    --purple: #a78bfa;
+    --blue: #67e8f9;
+    --dark: #080b20;
 }
 
 
-/* Navigation Hover Transition */
+/* Navbar */
+.navbar {
+    background-color: #080b20;
+    padding: 20px 0;
+    border-bottom: 1px solid #252544;
+}
+
+.navbar-brand {
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
 
 .nav-link {
+    color: #cbd5e1;
+    margin-left: 20px;
     transition: 0.3s;
 }
 
 .nav-link:hover {
-    color: #00ffff !important;
-    transform: scale(1.1);
+    color: var(--blue);
+    transform: translateY(-3px);
 }
 
 
-/* Landing Page */
-
+/* Hero Section */
 .hero {
-    background-color: #07152e;
-    color: white;
-    min-height: 600px;
-
+    min-height: 620px;
     display: flex;
+    align-items: center;
+    background:
+        radial-gradient(ellipse at 75% 45%,
+        #25205a 0%, #10142f 35%, #080b20 75%);
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    padding: 50px 12px;
+    position: relative;
+    z-index: 2;
+    animation: slideIn 1s ease;
+}
+
+.tag,
+.section-tag {
+    color: var(--blue);
+    font-size: 12px;
+    letter-spacing: 3px;
+    font-weight: bold;
+}
+
+.hero h1 {
+    font-size: 62px;
+    font-weight: bold;
+    margin-top: 20px;
+    line-height: 1.15;
+}
+
+.hero h1 span,
+.about-section h2 span,
+.missions-section h2 span,
+.contact-box h2 span {
+    color: var(--purple);
+}
+
+.hero p {
+    color: #b8bfd8;
+    font-size: 17px;
+    line-height: 1.9;
+    margin: 25px 0;
+    max-width: 450px;
+}
+
+
+/* Explore Button */
+.explore-btn {
+    display: inline-block;
+    background: linear-gradient(100deg, #8b5cf6, #4f8cff);
+    color: white;
+    text-decoration: none;
+    padding: 14px 25px;
+    border-radius: 30px;
+    font-weight: bold;
+    transition: 0.3s;
+    box-shadow: 0 0 20px #8b5cf644;
+}
+
+.explore-btn:hover {
+    color: white;
+    transform: translateY(-5px);
+    box-shadow: 0 0 30px #8b5cf699;
+}
+
+
+/* Universe Animation Area */
+.universe {
+    height: 430px;
+    position: relative;
+    display: flex;
+    justify-content: center;
     align-items: center;
 }
 
 
-/* Hero Heading */
-
-.hero h1 {
-    font-size: 50px;
-}
-
-.hero p {
-    font-size: 20px;
-}
-
-
-/* Space Area */
-
-.space {
+/* Main Planet */
+.planet {
+    width: 190px;
+    height: 190px;
+    border-radius: 50%;
+    background: linear-gradient(
+        135deg,
+        #a78bfa,
+        #6d28d9 45%,
+        #312e81
+    );
+    box-shadow:
+        inset -20px -15px 35px #080b20,
+        0 0 45px #8b5cf677;
     position: relative;
-    height: 400px;
+    animation: planetGlow 4s ease-in-out infinite;
+    z-index: 2;
 }
 
-
-/* Rocket */
-
-.rocket {
+.planet::before {
+    content: "";
     position: absolute;
-    font-size: 80px;
-
-    left: 40%;
-    top: 30%;
-
-    animation: rocketMove 4s infinite;
+    width: 65px;
+    height: 35px;
+    background: #c4b5fd55;
+    border-radius: 50%;
+    top: 40px;
+    left: 35px;
+    transform: rotate(-30deg);
 }
 
-
-/* Astronaut */
-
-.astronaut {
+.planet::after {
+    content: "";
     position: absolute;
-    font-size: 60px;
-
-    right: 20%;
-    top: 50%;
-
-    animation: astronautFloat 3s infinite;
+    width: 40px;
+    height: 20px;
+    background: #ddd6fe44;
+    border-radius: 50%;
+    bottom: 40px;
+    right: 35px;
+    transform: rotate(20deg);
 }
 
 
-/* Rocket Keyframe Animation */
+/* Planet Orbits */
+.orbit {
+    position: absolute;
+    border: 1px solid #a78bfa66;
+    border-radius: 50%;
+}
 
-@keyframes rocketMove {
+.orbit-one {
+    width: 300px;
+    height: 300px;
+    transform: rotate(-25deg);
+    animation: orbitSpin 12s linear infinite;
+}
 
-    0% {
-        transform: translate(0, 100px) rotate(-10deg);
-    }
-
-    50% {
-        transform: translate(50px, -50px) rotate(10deg);
-    }
-
-    100% {
-        transform: translate(0, 100px) rotate(-10deg);
-    }
-
+.orbit-two {
+    width: 370px;
+    height: 210px;
+    transform: rotate(45deg);
+    border-color: #67e8f955;
+    animation: orbitSpin 18s linear infinite reverse;
 }
 
 
-/* Astronaut Keyframe Animation */
-
-@keyframes astronautFloat {
-
-    0% {
-        transform: translateY(0);
-    }
-
-    50% {
-        transform: translateY(-30px);
-    }
-
-    100% {
-        transform: translateY(0);
-    }
-
+/* Orbiting Moon */
+.moon {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    background: linear-gradient(135deg, #f8fafc, #94a3b8);
+    border-radius: 50%;
+    top: 65px;
+    right: 90px;
+    box-shadow: 0 0 20px #ffffff66;
+    animation: moonFloat 4s ease-in-out infinite;
 }
 
 
-/* Missions */
+/* Floating Rocket */
+.floating-rocket {
+    position: absolute;
+    font-size: 65px;
+    left: 10%;
+    bottom: 70px;
+    transform: rotate(-25deg);
+    animation: rocketFlight 5s ease-in-out infinite;
+    z-index: 3;
+}
 
-.missions {
-    background-color: #f2f2f2;
+
+/* Sparkles */
+.spark {
+    position: absolute;
+    color: var(--blue);
+    animation: sparkle 2s ease-in-out infinite;
+}
+
+.spark-one {
+    top: 50px;
+    left: 25%;
+    font-size: 30px;
+}
+
+.spark-two {
+    right: 10%;
+    bottom: 80px;
+    font-size: 35px;
+    animation-delay: 0.7s;
+}
+
+.spark-three {
+    left: 15%;
+    top: 100px;
+    font-size: 18px;
+    animation-delay: 1s;
+}
+
+
+/* About Section */
+.about-section {
+    padding: 90px 0;
+    background: #0d1028;
+}
+
+.about-section h2,
+.missions-section h2 {
+    font-size: 38px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.about-text {
+    max-width: 700px;
+    margin: 20px auto;
+    color: #aab3d0;
+    line-height: 1.9;
+}
+
+
+/* Feature Boxes */
+.info-box {
+    padding: 30px 20px;
+    height: 100%;
+    background: #141936;
+    border: 1px solid #292e55;
+    border-radius: 18px;
+    transition: 0.4s;
+}
+
+.info-box:hover {
+    transform: translateY(-10px);
+    border-color: var(--purple);
+    box-shadow: 0 10px 35px #8b5cf622;
+}
+
+.info-icon {
+    font-size: 45px;
+    margin-bottom: 20px;
+    animation: iconFloat 3s ease-in-out infinite;
+}
+
+.info-box h3 {
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.info-box p {
+    color: #aab3d0;
+    line-height: 1.7;
+    margin-bottom: 0;
+}
+
+
+/* Missions Section */
+.missions-section {
+    padding: 90px 0;
+    background: linear-gradient(180deg, #080b20, #111333);
+}
+
+.mission-intro {
+    color: #aab3d0;
+    margin-top: 15px;
 }
 
 
 /* Mission Cards */
-
 .mission-card {
     height: 100%;
-    transition: 0.3s;
+    padding: 30px;
+    border: 1px solid #30345b;
+    border-radius: 20px;
+    background: linear-gradient(145deg, #191d40, #10142b);
+    transition: 0.4s;
+    position: relative;
+    overflow: hidden;
+}
+
+.mission-card::before {
+    content: "";
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    top: -65px;
+    right: -65px;
+    background: #8b5cf622;
+    transition: 0.4s;
 }
 
 .mission-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-12px) scale(1.02);
+    border-color: var(--purple);
+    box-shadow: 0 15px 35px #00000055;
+}
+
+.mission-card:hover::before {
+    transform: scale(2);
+}
+
+.mission-icon {
+    font-size: 55px;
+    margin-bottom: 25px;
+    transition: 0.4s;
+}
+
+.mission-card:hover .mission-icon {
+    transform: rotate(-12deg) scale(1.15);
+}
+
+.mission-number {
+    font-size: 11px;
+    color: var(--blue);
+    letter-spacing: 2px;
+}
+
+.mission-card h3 {
+    font-size: 24px;
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+.mission-card p {
+    color: #aab3d0;
+    line-height: 1.8;
+    min-height: 100px;
+}
+
+.mission-card a {
+    color: var(--purple);
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.mission-card a:hover {
+    color: var(--blue);
+    transform: translateX(5px);
+}
+
+
+/* Contact Section */
+.contact-section {
+    padding: 80px 0;
+    background: #0d1028;
+}
+
+.contact-box {
+    padding: 60px 25px;
+    border: 1px solid #39345f;
+    border-radius: 25px;
+    background:
+        radial-gradient(ellipse at top, #312e8155, transparent 70%),
+        #11142f;
+}
+
+.contact-box h2 {
+    font-size: 36px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.contact-box p {
+    color: #aab3d0;
+    margin-bottom: 30px;
+}
+
+
+/* Footer */
+footer {
+    background: #060817;
+    border-top: 1px solid #252544;
+    text-align: center;
+    padding: 25px 10px;
+    color: #aab3d0;
+}
+
+footer p {
+    margin: 0;
+}
+
+
+/* Animations */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes planetGlow {
+    0%, 100% {
+        box-shadow:
+            inset -20px -15px 35px #080b20,
+            0 0 35px #8b5cf655;
+    }
+
+    50% {
+        box-shadow:
+            inset -20px -15px 35px #080b20,
+            0 0 65px #8b5cf6aa;
+    }
+}
+
+@keyframes orbitSpin {
+    from {
+        rotate: 0deg;
+    }
+
+    to {
+        rotate: 360deg;
+    }
+}
+
+@keyframes moonFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-25px);
+    }
+}
+
+@keyframes rocketFlight {
+    0%, 100% {
+        transform: translate(0, 0) rotate(-25deg);
+    }
+
+    50% {
+        transform: translate(45px, -45px) rotate(-10deg);
+    }
+}
+
+@keyframes sparkle {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scale(0.7);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.3);
+    }
+}
+
+@keyframes iconFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-7px);
+    }
 }
 
 
 /* Mobile Responsive */
-
 @media screen and (max-width: 768px) {
 
     .hero {
-        min-height: auto;
-        padding: 80px 0;
+        padding: 45px 0 20px;
     }
 
     .hero h1 {
-        font-size: 35px;
+        font-size: 43px;
     }
 
     .hero p {
-        font-size: 18px;
+        font-size: 16px;
     }
 
-    .space {
-        height: 300px;
-        margin-top: 30px;
+    .universe {
+        height: 350px;
+        margin-top: 15px;
+        transform: scale(0.9);
     }
 
-    .rocket {
-        font-size: 60px;
+    .planet {
+        width: 145px;
+        height: 145px;
     }
 
-    .astronaut {
-        font-size: 45px;
+    .orbit-one {
+        width: 240px;
+        height: 240px;
     }
 
+    .orbit-two {
+        width: 290px;
+        height: 175px;
+    }
+
+    .floating-rocket {
+        font-size: 50px;
+    }
+
+    .about-section,
+    .missions-section {
+        padding: 65px 0;
+    }
+
+    .about-section h2,
+    .missions-section h2 {
+        font-size: 30px;
+    }
+
+    .contact-box h2 {
+        font-size: 28px;
+    }
+
+    .mission-card p {
+        min-height: auto;
+    }
+
+    .nav-link {
+        margin-left: 0;
+    }
+}
+
+
+/* Reduce motion when requested by device settings */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
 }
