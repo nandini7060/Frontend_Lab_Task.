@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome</title>
+</head>
+<body>
+    <script>
+         let a=prompt("Enter a no");
+let n=a,s=0;
+while(n!=0){
+    s=s*10+(n%10);
+    n=Math.floor(n/10);
+}
+if(s==a){
+    console.log("Yes Palindrome");
+    document.write("Yes Palindrome")
+}
+else{
+    console.log("No Palindrome");
+     document.write("No Palindrome")
+}
+    </script>
+    
+</body>
+</html>

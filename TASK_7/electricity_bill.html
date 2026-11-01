@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electricity_bill</title>
+</head>
+<body>
+    <script>
+    let n=prompt("Enter your amount");
+n=Number(n);
+let b=prompt("Enter a value Domestic,Commerce,Industrial");
+let amount=0;
+switch(b){
+    case "Domestic":
+         amount=n*5;
+        break;
+    case "Commerce":
+        amount=n*8;
+        break;
+    case "Industrial":
+         amount=n*10;
+        break;
+    default:
+        console.log("Invalid input");
+}
+document.write("Your bill is "+amount);
+    </script>
+</body>
+</html>
